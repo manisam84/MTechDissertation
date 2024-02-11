@@ -1,0 +1,943 @@
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>python models/research/object_detection/model_main_tf2.py --model_dir=models/my_ssd_mobnet --pipeline_config_path=models/my_ssd_mobnet/pipeline.config --num_train_steps=1000
+D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow_addons\utils\tfa_eol_msg.py:23: UserWarning:
+
+TensorFlow Addons (TFA) has ended development and introduction of new features.
+TFA has entered a minimal maintenance and release mode until a planned end of life in May 2024.
+Please modify downstream libraries to take dependencies from other repositories in our TensorFlow community (e.g. Keras, Keras-CV, and Keras-NLP).
+
+For more information see: https://github.com/tensorflow/addons/issues/2807
+
+  warnings.warn(
+D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow_addons\utils\ensure_tf_install.py:53: UserWarning: Tensorflow Addons supports using Python ops for all Tensorflow versions above or equal to 2.11.0 and strictly below 2.14.0 (nightly versions are not supported).
+ The versions of TensorFlow you are currently using is 2.10.1 and is not supported.
+Some things might work, some things might not.
+If you were to encounter a bug, do not file an issue.
+If you want to make sure you're using a tested and supported configuration, either change the TensorFlow version or the TensorFlow Addons's version.
+You can find the compatibility matrix in TensorFlow Addon's readme:
+https://github.com/tensorflow/addons
+  warnings.warn(
+2024-01-20 20:10:54.348089: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-20 20:10:54.433912: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1467 MB memory:  -> device: 0, name: NVIDIA GeForce 920MX, pci bus id: 0000:03:00.0, compute capability: 5.0
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+I0120 20:10:54.583105  8012 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:tensorflow:Maybe overwriting train_steps: 1000
+I0120 20:10:54.589087  8012 config_util.py:552] Maybe overwriting train_steps: 1000
+INFO:tensorflow:Maybe overwriting use_bfloat16: False
+I0120 20:10:54.590048  8012 config_util.py:552] Maybe overwriting use_bfloat16: False
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py:563: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+W0120 20:10:54.625955  8012 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py:563: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+INFO:tensorflow:Reading unweighted datasets: ['annotations/train.record']
+I0120 20:10:54.638956  8012 dataset_builder.py:162] Reading unweighted datasets: ['annotations/train.record']
+INFO:tensorflow:Reading record datasets for input file: ['annotations/train.record']
+I0120 20:10:54.639954  8012 dataset_builder.py:79] Reading record datasets for input file: ['annotations/train.record']
+INFO:tensorflow:Number of filenames to read: 1
+I0120 20:10:54.640914  8012 dataset_builder.py:80] Number of filenames to read: 1
+WARNING:tensorflow:num_readers has been reduced to 1 to match input file shards.
+W0120 20:10:54.641910  8012 dataset_builder.py:86] num_readers has been reduced to 1 to match input file shards.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:100: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+W0120 20:10:54.650926  8012 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:100: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:235: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+W0120 20:10:54.673826  8012 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:235: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+W0120 20:11:03.551093  8012 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0120 20:11:07.881519  8012 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0120 20:11:10.229908  8012 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\keras\backend.py:451: UserWarning: `tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+  warnings.warn(
+I0120 20:11:21.072666 12116 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:11:31.644231  3164 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+2024-01-20 20:11:37.321245: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8600
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.549941  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.556921  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.561910  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.567936  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.574915  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.577865  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.588837  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.591830  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.599830  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:11:44.602802  8012 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+W0120 20:11:46.727253 18844 deprecation.py:554] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+I0120 20:11:48.296060 18844 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:11:57.911904 12104 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:12:05.944009 17248 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:12:15.665122 10200 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+2024-01-20 20:12:31.456209: W tensorflow/core/framework/op_kernel.cc:1768] UNKNOWN: JIT compilation failed.
+Traceback (most recent call last):
+  File "models/research/object_detection/model_main_tf2.py", line 114, in <module>
+    tf.compat.v1.app.run()
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\platform\app.py", line 36, in run
+    _run(main=main, argv=argv, flags_parser=_parse_flags_tolerate_undef)
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\absl\app.py", line 308, in run
+    _run_main(main, args)
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\absl\app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "models/research/object_detection/model_main_tf2.py", line 105, in main
+    model_lib_v2.train_loop(
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 685, in train_loop
+    losses_dict = _dist_train_step(train_input_iter)
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\eager\execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.UnknownError: Graph execution error:
+
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 932, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 932, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+2 root error(s) found.
+  (0) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+         [[Identity_6/_160]]
+  (1) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+0 successful operations.
+0 derived errors ignored. [Op:__inference__dist_train_step_51158]
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>echo $PATH
+$PATH
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>echo PATH
+PATH
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>pATH
+PATH=D:\Tools\Anaconda\envs\tf2_gpu_od_api;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Library\mingw-w64\bin;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Library\usr\bin;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Library\bin;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Scripts;D:\Tools\Anaconda\envs\tf2_gpu_od_api\bin;D:\Tools\Anaconda\condabin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp;D:\Tools\CUDA\Dev\bin;D:\Tools\CUDA\Dev\libnvvp;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;D:\Tools\PUTTY;D:\Windows Kits\10\Windows Performance Toolkit;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\NVIDIA Corporation\Nsight Compute 2022.3.0;D:\Tools\Anaconda;D:\Tools\Anaconda\Library\mingw-w64\bin;D:\Tools\Anaconda\Library\usr\bin;D:\Tools\Anaconda\Library\bin;D:\Tools\Anaconda\Scripts;C:\Users\SMSUser\AppData\Local\Microsoft\WindowsApps;D:\Project\YOLO\pythonProject\Tensorflow\protoc\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\extras\CUPTI\lib64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\include;D:\Tools\cudnn\cuda\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\lib;.
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>echo path
+path
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>cuda_dir
+'cuda_dir' is not recognized as an internal or external command,
+operable program or batch file.
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>path
+PATH=D:\Tools\Anaconda\envs\tf2_gpu_od_api;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Library\mingw-w64\bin;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Library\usr\bin;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Library\bin;D:\Tools\Anaconda\envs\tf2_gpu_od_api\Scripts;D:\Tools\Anaconda\envs\tf2_gpu_od_api\bin;D:\Tools\Anaconda\condabin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\libnvvp;D:\Tools\CUDA\Dev\bin;D:\Tools\CUDA\Dev\libnvvp;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;D:\Tools\PUTTY;D:\Windows Kits\10\Windows Performance Toolkit;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\NVIDIA Corporation\Nsight Compute 2022.3.0;D:\Tools\Anaconda;D:\Tools\Anaconda\Library\mingw-w64\bin;D:\Tools\Anaconda\Library\usr\bin;D:\Tools\Anaconda\Library\bin;D:\Tools\Anaconda\Scripts;C:\Users\SMSUser\AppData\Local\Microsoft\WindowsApps;D:\Project\YOLO\pythonProject\Tensorflow\protoc\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\extras\CUPTI\lib64;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\include;D:\Tools\cudnn\cuda\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8\lib;.
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>cuda_path
+'cuda_path' is not recognized as an internal or external command,
+operable program or batch file.
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>CUDA_PATH
+'CUDA_PATH' is not recognized as an internal or external command,
+operable program or batch file.
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>echo $CUDA_PATH
+$CUDA_PATH
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>CUDA_PATH
+'CUDA_PATH' is not recognized as an internal or external command,
+operable program or batch file.
+
+(tf2_gpu_od_api) D:\Project\ObjectDetection>cd D:\Project\YOLO\pythonProject
+
+(tf2_gpu_od_api) D:\Project\YOLO\pythonProject>python Tensorflow/workspace/models/research/object_detection/model_main_tf2.py --model_dir=Tensorflow/workspace/models/my_ssd_mobnet --pipeline_config_path=Tensorflow/workspace/models/my_ssd_mobnet/pipeline.config --num_train_steps=1000
+D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow_addons\utils\tfa_eol_msg.py:23: UserWarning:
+
+TensorFlow Addons (TFA) has ended development and introduction of new features.
+TFA has entered a minimal maintenance and release mode until a planned end of life in May 2024.
+Please modify downstream libraries to take dependencies from other repositories in our TensorFlow community (e.g. Keras, Keras-CV, and Keras-NLP).
+
+For more information see: https://github.com/tensorflow/addons/issues/2807
+
+  warnings.warn(
+D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow_addons\utils\ensure_tf_install.py:53: UserWarning: Tensorflow Addons supports using Python ops for all Tensorflow versions above or equal to 2.11.0 and strictly below 2.14.0 (nightly versions are not supported).
+ The versions of TensorFlow you are currently using is 2.10.1 and is not supported.
+Some things might work, some things might not.
+If you were to encounter a bug, do not file an issue.
+If you want to make sure you're using a tested and supported configuration, either change the TensorFlow version or the TensorFlow Addons's version.
+You can find the compatibility matrix in TensorFlow Addon's readme:
+https://github.com/tensorflow/addons
+  warnings.warn(
+2024-01-20 20:46:31.711106: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-20 20:46:31.775520: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1467 MB memory:  -> device: 0, name: NVIDIA GeForce 920MX, pci bus id: 0000:03:00.0, compute capability: 5.0
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+I0120 20:46:31.923800 17088 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:tensorflow:Maybe overwriting train_steps: 1000
+I0120 20:46:31.929781 17088 config_util.py:552] Maybe overwriting train_steps: 1000
+INFO:tensorflow:Maybe overwriting use_bfloat16: False
+I0120 20:46:31.929781 17088 config_util.py:552] Maybe overwriting use_bfloat16: False
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py:563: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+W0120 20:46:31.966683 17088 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py:563: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+INFO:tensorflow:Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+I0120 20:46:31.979648 17088 dataset_builder.py:162] Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+I0120 20:46:31.980645 17088 dataset_builder.py:79] Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Number of filenames to read: 1
+I0120 20:46:31.981643 17088 dataset_builder.py:80] Number of filenames to read: 1
+WARNING:tensorflow:num_readers has been reduced to 1 to match input file shards.
+W0120 20:46:31.982640 17088 dataset_builder.py:86] num_readers has been reduced to 1 to match input file shards.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:100: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+W0120 20:46:31.992613 17088 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:100: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:235: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+W0120 20:46:32.016549 17088 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\builders\dataset_builder.py:235: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+W0120 20:46:41.088300 17088 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0120 20:46:45.006871 17088 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0120 20:46:47.314748 17088 deprecation.py:350] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\keras\backend.py:451: UserWarning: `tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+  warnings.warn(
+I0120 20:46:57.533167 12820 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:47:07.910535 10872 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+2024-01-20 20:47:11.749081: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8600
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.422363 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.426330 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.432316 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.434311 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.440293 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.442287 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.449272 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.451265 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.456251 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0120 20:47:17.460240 17088 cross_device_ops.py:616] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+W0120 20:47:19.160928  6336 deprecation.py:554] From D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+I0120 20:47:20.496320  6336 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:47:26.772540  9964 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:47:32.187068  6872 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 20:47:38.165085 10008 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+2024-01-20 20:47:50.387829: W tensorflow/core/framework/op_kernel.cc:1768] UNKNOWN: JIT compilation failed.
+Traceback (most recent call last):
+  File "Tensorflow/workspace/models/research/object_detection/model_main_tf2.py", line 114, in <module>
+    tf.compat.v1.app.run()
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\platform\app.py", line 36, in run
+    _run(main=main, argv=argv, flags_parser=_parse_flags_tolerate_undef)
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\absl\app.py", line 308, in run
+    _run_main(main, args)
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\absl\app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "Tensorflow/workspace/models/research/object_detection/model_main_tf2.py", line 105, in main
+    model_lib_v2.train_loop(
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 685, in train_loop
+    losses_dict = _dist_train_step(train_input_iter)
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\util\traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorflow\python\eager\execute.py", line 54, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.UnknownError: Graph execution error:
+
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 932, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\threading.py", line 932, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\tf2_gpu_od_api\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+2 root error(s) found.
+  (0) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+         [[while/LoopCond/_665/_108]]
+  (1) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+0 successful operations.
+0 derived errors ignored. [Op:__inference__dist_train_step_47359]
+
+(tf2_gpu_od_api) D:\Project\YOLO\pythonProject>conda deactivate tf2_gpu_od_api
+deactivate does not accept arguments
+remainder_args: ['tf2_gpu_od_api']
+
+
+(tf2_gpu_od_api) D:\Project\YOLO\pythonProject>conda deactivate tf2_gpu_od_api
+deactivate does not accept arguments
+remainder_args: ['tf2_gpu_od_api']
+
+
+(tf2_gpu_od_api) D:\Project\YOLO\pythonProject>conda deactivate
+
+D:\Project\YOLO\pythonProject>cd D:\Project\Tensor
+
+D:\Project\Tensor>cd Tensorflow
+
+D:\Project\Tensor\Tensorflow>dir
+ Volume in drive D is Project Tools
+ Volume Serial Number is F8D9-B929
+
+ Directory of D:\Project\Tensor\Tensorflow
+
+20/01/2024  09:06 PM    <DIR>          .
+20/01/2024  09:06 PM    <DIR>          ..
+20/01/2024  09:06 PM    <DIR>          labelImg
+20/01/2024  08:59 PM    <DIR>          scripts
+20/01/2024  08:59 PM    <DIR>          workspace
+               0 File(s)              0 bytes
+               5 Dir(s)  41,389,178,880 bytes free
+
+D:\Project\Tensor\Tensorflow>cd workspace
+
+D:\Project\Tensor\Tensorflow\workspace>ll
+'ll' is not recognized as an internal or external command,
+operable program or batch file.
+
+D:\Project\Tensor\Tensorflow\workspace>dir
+ Volume in drive D is Project Tools
+ Volume Serial Number is F8D9-B929
+
+ Directory of D:\Project\Tensor\Tensorflow\workspace
+
+20/01/2024  08:59 PM    <DIR>          .
+20/01/2024  08:59 PM    <DIR>          ..
+20/01/2024  08:59 PM    <DIR>          annotations
+20/01/2024  08:59 PM    <DIR>          images
+20/01/2024  09:24 PM    <DIR>          models
+20/01/2024  08:59 PM    <DIR>          pre-trained-models
+               0 File(s)              0 bytes
+               6 Dir(s)  41,389,178,880 bytes free
+
+D:\Project\Tensor\Tensorflow\workspace>cd models
+
+D:\Project\Tensor\Tensorflow\workspace\models>dir
+ Volume in drive D is Project Tools
+ Volume Serial Number is F8D9-B929
+
+ Directory of D:\Project\Tensor\Tensorflow\workspace\models
+
+20/01/2024  09:24 PM    <DIR>          .
+20/01/2024  09:24 PM    <DIR>          ..
+20/01/2024  09:22 PM    <DIR>          .github
+20/01/2024  09:23 PM             1,104 .gitignore
+20/01/2024  09:23 PM               337 AUTHORS
+20/01/2024  09:23 PM             2,528 CODEOWNERS
+20/01/2024  09:23 PM               390 CONTRIBUTING.md
+20/01/2024  09:23 PM    <DIR>          docs
+20/01/2024  09:23 PM             1,115 ISSUES.md
+20/01/2024  09:23 PM            11,405 LICENSE
+20/01/2024  09:23 PM    <DIR>          official
+20/01/2024  09:24 PM    <DIR>          orbit
+20/01/2024  09:23 PM             3,072 README.md
+20/01/2024  09:24 PM    <DIR>          tensorflow_models
+               7 File(s)         19,951 bytes
+               7 Dir(s)  41,389,178,880 bytes free
+
+D:\Project\Tensor\Tensorflow\workspace\models>conda activate od
+
+(od) D:\Project\Tensor\Tensorflow\workspace\models>python -c "import tensorflow as tf; print(tf.__version__)"
+2.10.1
+
+(od) D:\Project\Tensor\Tensorflow\workspace\models>python -c "import keras as tf; print(tf.__version__)"
+2.10.0
+
+(od) D:\Project\Tensor\Tensorflow\workspace\models>python Tensorflow/workspace/models/research/object_detection/model_main_tf2.py --model_dir=Tensorflow/workspace/models/my_ssd_mobnet --pipeline_config_path=Tensorflow/workspace/models/my_ssd_mobnet/pipeline.config --num_train_steps=100
+
+(od) D:\Project\Tensor\Tensorflow\workspace\models>cd ..
+
+(od) D:\Project\Tensor\Tensorflow\workspace>cd ..\..
+
+(od) D:\Project\Tensor>python Tensorflow/workspace/models/research/object_detection/model_main_tf2.py --model_dir=Tensorflow/workspace/models/my_ssd_mobnet --pipeline_config_path=Tensorflow/workspace/models/my_ssd_mobnet/pipeline.config --num_train_steps=100
+2024-01-20 23:56:43.117912: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-20 23:56:43.227410: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1467 MB memory:  -> device: 0, name: NVIDIA GeForce 920MX, pci bus id: 0000:03:00.0, compute capability: 5.0
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+I0120 23:56:43.380001  1956 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:tensorflow:Maybe overwriting train_steps: 100
+I0120 23:56:43.393013  1956 config_util.py:552] Maybe overwriting train_steps: 100
+INFO:tensorflow:Maybe overwriting use_bfloat16: False
+I0120 23:56:43.393624  1956 config_util.py:552] Maybe overwriting use_bfloat16: False
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+W0120 23:56:43.429977  1956 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+INFO:tensorflow:Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+I0120 23:56:43.444756  1956 dataset_builder.py:162] Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+I0120 23:56:43.445711  1956 dataset_builder.py:79] Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Number of filenames to read: 1
+I0120 23:56:43.445711  1956 dataset_builder.py:80] Number of filenames to read: 1
+WARNING:tensorflow:num_readers has been reduced to 1 to match input file shards.
+W0120 23:56:43.446709  1956 dataset_builder.py:87] num_readers has been reduced to 1 to match input file shards.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+W0120 23:56:43.457679  1956 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+W0120 23:56:43.481483  1956 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+W0120 23:56:51.504422  1956 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0120 23:56:55.136710  1956 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0120 23:56:57.144720  1956 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+D:\Tools\Anaconda\envs\od\lib\site-packages\keras\backend.py:452: UserWarning: `tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+  "`tf.keras.backend.set_learning_phase` is deprecated and "
+I0120 23:57:07.026621 14824 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0120 23:57:16.578939 10828 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+2024-01-20 23:57:25.168188: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8600
+Could not locate zlibwapi.dll. Please make sure it is in your library path!
+
+(od) D:\Project\Tensor>python Tensorflow/workspace/models/research/object_detection/model_main_tf2.py --model_dir=Tensorflow/workspace/models/my_ssd_mobnet --pipeline_config_path=Tensorflow/workspace/models/my_ssd_mobnet/pipeline.config --num_train_steps=100
+2024-01-21 00:03:15.384618: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-21 00:03:15.454180: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1467 MB memory:  -> device: 0, name: NVIDIA GeForce 920MX, pci bus id: 0000:03:00.0, compute capability: 5.0
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+I0121 00:03:15.605003  5036 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:tensorflow:Maybe overwriting train_steps: 100
+I0121 00:03:15.612559  5036 config_util.py:552] Maybe overwriting train_steps: 100
+INFO:tensorflow:Maybe overwriting use_bfloat16: False
+I0121 00:03:15.613517  5036 config_util.py:552] Maybe overwriting use_bfloat16: False
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+W0121 00:03:15.651298  5036 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+INFO:tensorflow:Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+I0121 00:03:15.667359  5036 dataset_builder.py:162] Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+I0121 00:03:15.667821  5036 dataset_builder.py:79] Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Number of filenames to read: 1
+I0121 00:03:15.669555  5036 dataset_builder.py:80] Number of filenames to read: 1
+WARNING:tensorflow:num_readers has been reduced to 1 to match input file shards.
+W0121 00:03:15.670555  5036 dataset_builder.py:87] num_readers has been reduced to 1 to match input file shards.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+W0121 00:03:15.686213  5036 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+W0121 00:03:15.712575  5036 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+W0121 00:03:23.435468  5036 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0121 00:03:26.793455  5036 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0121 00:03:28.808647  5036 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+D:\Tools\Anaconda\envs\od\lib\site-packages\keras\backend.py:452: UserWarning: `tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+  "`tf.keras.backend.set_learning_phase` is deprecated and "
+I0121 00:03:38.341635 11320 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:03:48.085787  6176 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+2024-01-21 00:03:52.443250: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8600
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.180460  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.187281  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.193264  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.196259  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.203239  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.206230  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.214256  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.219653  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.225635  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:04:02.228626  5036 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+W0121 00:04:03.831169  4932 deprecation.py:560] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+I0121 00:04:05.124961  4932 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:04:11.528723 16528 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:04:18.426265 18964 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:04:25.507572 16360 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+2024-01-21 00:04:37.696863: W tensorflow/core/framework/op_kernel.cc:1768] UNKNOWN: JIT compilation failed.
+Traceback (most recent call last):
+  File "Tensorflow/workspace/models/research/object_detection/model_main_tf2.py", line 114, in <module>
+    tf.compat.v1.app.run()
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\platform\app.py", line 36, in run
+    _run(main=main, argv=argv, flags_parser=_parse_flags_tolerate_undef)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\absl\app.py", line 308, in run
+    _run_main(main, args)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\absl\app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "Tensorflow/workspace/models/research/object_detection/model_main_tf2.py", line 111, in main
+    record_summaries=FLAGS.record_summaries)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 685, in train_loop
+    losses_dict = _dist_train_step(train_input_iter)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\eager\execute.py", line 55, in quick_execute
+    inputs, attrs, num_outputs)
+tensorflow.python.framework.errors_impl.UnknownError: Graph execution error:
+
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 926, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 926, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+2 root error(s) found.
+  (0) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+         [[while/body/_1/train_input_images/write_summary/Equal_1/_12]]
+  (1) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+0 successful operations.
+0 derived errors ignored. [Op:__inference__dist_train_step_50767]
+
+(od) D:\Project\Tensor>echo $CUDA_DIR
+$CUDA_DIR
+
+(od) D:\Project\Tensor>set CUDA_DIR=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.8
+
+(od) D:\Project\Tensor>echo $CUDA_DIR
+$CUDA_DIR
+
+(od) D:\Project\Tensor>echo CUDA_DIR
+CUDA_DIR
+
+(od) D:\Project\Tensor>pwd
+/d/Project/Tensor
+
+(od) D:\Project\Tensor>python Tensorflow/workspace/models/research/object_detection/model_main_tf2.py --model_dir=Tensorflow/workspace/models/my_ssd_mobnet --pipeline_config_path=Tensorflow/workspace/models/my_ssd_mobnet/pipeline.config --num_train_steps=100
+2024-01-21 00:13:02.167079: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-21 00:13:02.233183: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1467 MB memory:  -> device: 0, name: NVIDIA GeForce 920MX, pci bus id: 0000:03:00.0, compute capability: 5.0
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+I0121 00:13:02.384680 14252 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:tensorflow:Maybe overwriting train_steps: 100
+I0121 00:13:02.391700 14252 config_util.py:552] Maybe overwriting train_steps: 100
+INFO:tensorflow:Maybe overwriting use_bfloat16: False
+I0121 00:13:02.391700 14252 config_util.py:552] Maybe overwriting use_bfloat16: False
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+W0121 00:13:02.428602 14252 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+INFO:tensorflow:Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+I0121 00:13:02.443561 14252 dataset_builder.py:162] Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+I0121 00:13:02.444557 14252 dataset_builder.py:79] Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Number of filenames to read: 1
+I0121 00:13:02.448516 14252 dataset_builder.py:80] Number of filenames to read: 1
+WARNING:tensorflow:num_readers has been reduced to 1 to match input file shards.
+W0121 00:13:02.452872 14252 dataset_builder.py:87] num_readers has been reduced to 1 to match input file shards.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+W0121 00:13:02.461850 14252 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+W0121 00:13:02.489408 14252 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+W0121 00:13:10.371221 14252 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0121 00:13:13.950585 14252 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0121 00:13:15.927642 14252 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+D:\Tools\Anaconda\envs\od\lib\site-packages\keras\backend.py:452: UserWarning: `tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+  "`tf.keras.backend.set_learning_phase` is deprecated and "
+I0121 00:13:25.494116 19020 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:13:35.140682 17540 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+2024-01-21 00:13:39.473156: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8600
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.074930 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.081891 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.086876 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.089868 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.099842 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.101835 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.109873 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.112869 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.119217 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:13:46.123290 14252 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+W0121 00:13:47.728569 16864 deprecation.py:560] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+I0121 00:13:48.922866 16864 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:13:55.382916  2428 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:14:02.064727  5756 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:14:08.188489 15672 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+error: Can't find libdevice directory ${CUDA_DIR}/nvvm/libdevice
+2024-01-21 00:14:21.137437: W tensorflow/core/framework/op_kernel.cc:1768] UNKNOWN: JIT compilation failed.
+Traceback (most recent call last):
+  File "Tensorflow/workspace/models/research/object_detection/model_main_tf2.py", line 114, in <module>
+    tf.compat.v1.app.run()
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\platform\app.py", line 36, in run
+    _run(main=main, argv=argv, flags_parser=_parse_flags_tolerate_undef)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\absl\app.py", line 308, in run
+    _run_main(main, args)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\absl\app.py", line 254, in _run_main
+    sys.exit(main(argv))
+  File "Tensorflow/workspace/models/research/object_detection/model_main_tf2.py", line 111, in main
+    record_summaries=FLAGS.record_summaries)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 685, in train_loop
+    losses_dict = _dist_train_step(train_input_iter)
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\traceback_utils.py", line 153, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\eager\execute.py", line 55, in quick_execute
+    inputs, attrs, num_outputs)
+tensorflow.python.framework.errors_impl.UnknownError: Graph execution error:
+
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 926, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+Detected at node 'train_input_images/write_summary/mod' defined at (most recent call last):
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 890, in _bootstrap
+      self._bootstrap_inner()
+    File "D:\Tools\Anaconda\envs\od\lib\threading.py", line 926, in _bootstrap_inner
+      self.run()
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 629, in train_step_fn
+      if record_summaries:
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 630, in train_step_fn
+      tf.compat.v2.summary.image(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\tensorboard\plugins\image\summary_v2.py", line 140, in image
+      return tf.summary.write(
+    File "D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py", line 599, in <lambda>
+      lambda: global_step % num_steps_per_iteration == 0):
+Node: 'train_input_images/write_summary/mod'
+2 root error(s) found.
+  (0) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+         [[train_input_images/write_summary/summary_cond/pivot_t/_735/_25]]
+  (1) UNKNOWN:  JIT compilation failed.
+         [[{{node train_input_images/write_summary/mod}}]]
+0 successful operations.
+0 derived errors ignored. [Op:__inference__dist_train_step_51158]
+
+(od) D:\Project\Tensor>python Tensorflow/workspace/models/research/object_detection/model_main_tf2.py --model_dir=Tensorflow/workspace/models/my_ssd_mobnet --pipeline_config_path=Tensorflow/workspace/models/my_ssd_mobnet/pipeline.config --num_train_steps=100
+2024-01-21 00:15:22.336884: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2024-01-21 00:15:22.399455: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1616] Created device /job:localhost/replica:0/task:0/device:GPU:0 with 1467 MB memory:  -> device: 0, name: NVIDIA GeForce 920MX, pci bus id: 0000:03:00.0, compute capability: 5.0
+INFO:tensorflow:Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+I0121 00:15:22.544827 12384 mirrored_strategy.py:374] Using MirroredStrategy with devices ('/job:localhost/replica:0/task:0/device:GPU:0',)
+INFO:tensorflow:Maybe overwriting train_steps: 100
+I0121 00:15:22.549840 12384 config_util.py:552] Maybe overwriting train_steps: 100
+INFO:tensorflow:Maybe overwriting use_bfloat16: False
+I0121 00:15:22.550460 12384 config_util.py:552] Maybe overwriting use_bfloat16: False
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+W0121 00:15:22.588363 12384 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\model_lib_v2.py:564: StrategyBase.experimental_distribute_datasets_from_function (from tensorflow.python.distribute.distribute_lib) is deprecated and will be removed in a future version.
+Instructions for updating:
+rename to distribute_datasets_from_function
+INFO:tensorflow:Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+I0121 00:15:22.602938 12384 dataset_builder.py:162] Reading unweighted datasets: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+I0121 00:15:22.607497 12384 dataset_builder.py:79] Reading record datasets for input file: ['Tensorflow/workspace/annotations/train.record']
+INFO:tensorflow:Number of filenames to read: 1
+I0121 00:15:22.608492 12384 dataset_builder.py:80] Number of filenames to read: 1
+WARNING:tensorflow:num_readers has been reduced to 1 to match input file shards.
+W0121 00:15:22.609479 12384 dataset_builder.py:87] num_readers has been reduced to 1 to match input file shards.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+W0121 00:15:22.623442 12384 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:104: parallel_interleave (from tensorflow.python.data.experimental.ops.interleave_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.interleave(map_func, cycle_length, block_length, num_parallel_calls=tf.data.AUTOTUNE)` instead. If sloppy execution is desired, use `tf.data.Options.deterministic`.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+W0121 00:15:22.646635 12384 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\object_detection\builders\dataset_builder.py:236: DatasetV1.map_with_legacy_function (from tensorflow.python.data.ops.dataset_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.data.Dataset.map()
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+W0121 00:15:30.573082 12384 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sparse_to_dense (from tensorflow.python.ops.sparse_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Create a `tf.sparse.SparseTensor` and use `tf.sparse.to_dense` instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+W0121 00:15:33.982283 12384 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: sample_distorted_bounding_box (from tensorflow.python.ops.image_ops_impl) is deprecated and will be removed in a future version.
+Instructions for updating:
+`seed2` arg is deprecated.Use sample_distorted_bounding_box_v2 instead.
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+W0121 00:15:35.925173 12384 deprecation.py:356] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\dispatch.py:1176: to_float (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use `tf.cast` instead.
+D:\Tools\Anaconda\envs\od\lib\site-packages\keras\backend.py:452: UserWarning: `tf.keras.backend.set_learning_phase` is deprecated and will be removed after 2020-10-11. To update it, simply pass a True/False value to the `training` argument of the `__call__` method of your layer or model.
+  "`tf.keras.backend.set_learning_phase` is deprecated and "
+I0121 00:15:45.443199 13364 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:15:54.792115 17404 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+2024-01-21 00:15:59.099588: I tensorflow/stream_executor/cuda/cuda_dnn.cc:384] Loaded cuDNN version 8600
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.433426 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.440405 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.445393 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.449419 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.457369 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.460390 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.467370 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.471858 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.477175 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+INFO:tensorflow:Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+I0121 00:16:05.481179 12384 cross_device_ops.py:618] Reduce to /job:localhost/replica:0/task:0/device:CPU:0 then broadcast to ('/job:localhost/replica:0/task:0/device:CPU:0',).
+WARNING:tensorflow:From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+W0121 00:16:07.199069  2240 deprecation.py:560] From D:\Tools\Anaconda\envs\od\lib\site-packages\tensorflow\python\util\deprecation.py:629: calling map_fn_v2 (from tensorflow.python.ops.map_fn) with dtype is deprecated and will be removed in a future version.
+Instructions for updating:
+Use fn_output_signature instead
+I0121 00:16:08.390888  2240 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:16:14.811790  2936 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:16:20.384904 12748 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+I0121 00:16:26.513816  1120 api.py:459] feature_map_spatial_dims: [(40, 40), (20, 20), (10, 10), (5, 5), (3, 3)]
+2024-01-21 00:16:47.321727: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 917.95MiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2024-01-21 00:21:59.607153: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 928.81MiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+2024-01-21 00:22:02.948968: W tensorflow/core/common_runtime/bfc_allocator.cc:290] Allocator (GPU_0_bfc) ran out of memory trying to allocate 983.51MiB with freed_by_count=0. The caller indicates that this is not a failure, but this may mean that there could be performance gains if more memory were available.
+INFO:tensorflow:Step 100 per-step time 4.327s
+I0121 00:23:19.507266 12384 model_lib_v2.py:707] Step 100 per-step time 4.327s
+INFO:tensorflow:{'Loss/classification_loss': 0.43879756,
+ 'Loss/localization_loss': 0.33726028,
+ 'Loss/regularization_loss': 0.15381117,
+ 'Loss/total_loss': 0.929869,
+ 'learning_rate': 0.0319994}
+I0121 00:23:19.508655 12384 model_lib_v2.py:708] {'Loss/classification_loss': 0.43879756,
+ 'Loss/localization_loss': 0.33726028,
+ 'Loss/regularization_loss': 0.15381117,
+ 'Loss/total_loss': 0.929869,
+ 'learning_rate': 0.0319994}
+
+(od) D:\Project\Tensor>
+(od) D:\Project\Tensor> 
